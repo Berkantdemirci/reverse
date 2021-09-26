@@ -152,7 +152,7 @@ zip dosyasını parolası : crackmes.one
 
 Analiz ederken bazı değişkenleri ve kullanıldıkları yerleri daha rahat görmek açısından değişkenlere yeni isimler verdim. Bundan dolayı analizi yaptığınızda değişken adları bu ekran alıntısındaki ile aynı olmayacaktır. Örneğin, scanf ile alınan bir veri sizde "local_48" olarak adlandırılmış olabilir. Onu "user_name" olarak değiştirdim. Gerekli değişken isimlendirmelerini kod yapısını inceleyerek ve mantıksal çıkarımlarla isimlendirebilirsiniz. İlgili değişkene sağ tıklayarak "rename variable" sekmesine tıklayın ve değiştirin.  
 
-Değişkenleri el ile tek tek değiştirmemek için sol üstteki edit sekmesine tıklayın. "Tool options" sekmesine tıklayın ve karşınıza çıkan ekranın alt kısmındaki filtreye "cursor text highlight" yazın. "Mouse button to active" yazan satır sizde "Middle" olarak seçili olacaktır. Onu "Left" ile değiştirin ve uygulaya basın. Artık bir değişkenin ismini kodun her yerinde aynı anda değiştirebilirsiniz. 
+Değişkenleri el ile tek tek değiştirmemek için sol üstteki edit sekmesine tıklayın. "Tool options" sekmesine tıklayın ve karşınıza çıkan ekranın alt kısmındaki filtreye "cursor text highlight" yazın. "Mouse button to active" yazan satır sizde "Middle" olarak seçili olacaktır. "Left" ile değiştirin ve uygulaya basın. Artık bir değişkenin ismini kodun her yerinde aynı anda değiştirebilirsiniz. 
 
 | GHIDRA | IDA PRO |
 | --- | --- |
