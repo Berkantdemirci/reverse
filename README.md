@@ -15,11 +15,57 @@ Bir uygulamada if ve else if yapıları makinenin anlayabilmesi için assembly k
 
 Üst üste yazılmış 3 if koşul yapısında bir göz atalım. 
 
+```C
+#include <stdio.h>
+
+int main()
+{
+    int number = 5;
+    if(number < 0) 
+    {
+        printf("This number is negative");
+    }
+    if(number > 0) 
+    {
+        printf("This number is positive");
+    }
+    if(number == 0) 
+    {
+        printf("This number is 0");
+    }
+
+    return 0;
+}
+```
+
 ![](https://user-images.githubusercontent.com/58151582/134725523-6ded2bca-d1c0-4c6b-8d27-c93d67b742bd.png)
 
 Ekran alıntısında da görüldüğü üzere if komutu makine diline CMP ve jump instructions ile çevirilir. Elde ettiğimiz sonuç çok şaşırtıcı değil. 
 
 Şimdi else if komutunun makine koduna bakalım. 
+
+```C
+#include <stdio.h>
+
+int main()
+{
+    int number = 5;
+    if(number < 0) 
+    {
+        printf("This number is negative");
+    }
+    else if (number > 0) 
+    {
+        printf("This number is positive");
+    }
+    else if (number == 0) 
+    {
+        printf("This number is 0");
+    }
+
+    return 0;
+}
+```
 
 ![](https://user-images.githubusercontent.com/58151582/134725693-34bc87e8-14df-41a2-b705-4058bc1583b9.png)
 
@@ -27,6 +73,30 @@ Sanırım işler biraz karıştı. Sağduyumuza göre else if komutunun if komut
 if ile else if aynı offsete dönüştürülür. 
 
 Bir de yazdığımız bir C kodunu GHIDRA aracı ile reverse ederek elde ettiğimiz C kodunu inceleyelim. 
+
+```C
+#include <stdio.h>
+
+void main()
+{
+	int number;
+	
+	printf("pls type a number : \n");
+	scanf("%d",&number);
+	if (number < 0)
+	printf("Number is negative");
+	
+	else if (number > 0)
+	printf("Number is positive");
+	
+	else
+	printf("Merhaba ben volkan konak");
+}
+```
+
+C kodları bildiğiniz üzere derlenmeye ihtiyaç duyarlar. Bu seride herhangi bir C kodunu derlemek için linux üzerindeki gcc derleyicisini kullanacağım. 
+C kodunu yazdıktan sonra .c uzantılı olarak kaydediyoruz. Linux terminaline ``` gcc dosya_adı.c -o dosya_adı``` yazarak derleyelim.
+Derlediğimiz C kodunu GHIDRA aracı ile analiz edelim. GHIDRA aracının nasıl kullanacağınızı bilmiyorsanız https://www.youtube.com/watch?v=fTGTnrgjuGA bu videoya göz atabilirsiniz.
 
 | KAYNAK KOD | GHIDRA Decompile|
 | --- | --- |
@@ -39,6 +109,30 @@ Sağ taraftaki kodun 0 ile 1 arasındaki durumlarda yanlış çıktı vereceğin
 ### Makine Dilinde *for*, *while* ve *if* Koşullarını Anlamak 
 
 if ve else if de olduğu gibi while ve for döngüleri de birer koşul durumu ile çalışmaktadırlar. Peki bir defa çalışan for ve while döngüsünü bir if koşulundan nasıl ayırabiliriz. 
+
+```C
+#include <stdio.h>
+
+int main()
+{
+    int i = 1;
+    if(i < 2) 
+    {
+        printf("zaa");
+    }
+    for (; i < 2; i++) 
+    {
+        printf("%d",i);
+    }
+    while(i < 10) 
+    {
+        printf("sa");
+        i++;
+    }
+
+    return 0;
+}
+```
 
 ![](https://user-images.githubusercontent.com/58151582/134745654-deb3138d-ee1d-4b1c-b0e0-64404d64c379.png)
 
@@ -60,4 +154,4 @@ Bunun için crackmes.one sitesi üzerindeki bir crackmes'i analiz edeceğiz. GHI
 GHIDRA ve IDA PRO ile aynı kodu analiz ederken bile decompilerlar ilgili döngü için farklı çıktılar vermektedir. IDA PRO ve GHIDRA'nın bizlere gösterdiği gibi kontrol değişkeni while içerisinde değiştirilmediği sürece while ve for döngüsünü birbirinden ayırmak çok zordur.  
 
 Buradan anlaşılacağı üzere tersine mühendislik yaparken elde ettiğimiz kaynak kodu aslında ana kaynak kodun bir yansımasıdır. Her ne kadar decompilerlar tarafından bizlere verilen kaynak C kodları ana kod ile aynı işlevi görse de birebir olarak çeviri mümkün değildir.
-  
+
