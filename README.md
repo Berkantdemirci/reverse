@@ -13,9 +13,9 @@ bayraklar içeriyorsa (bknz : https://www.tutorialspoint.com/assembly_programmin
 
 C kodları bildiğiniz üzere derlenmeye ihtiyaç duyarlar. Bu seride herhangi bir C kodunu derlemek için linux üzerindeki gcc derleyicisini kullanacağım. C kodunu yazdıktan sonra .c uzantılı olarak kaydedip Linux terminaline ``` gcc dosya_adı.c -o dosya_adı``` yazarak derliyoruz.
 
-Derlediğimiz C kodunu GHIDRA aracı ile analiz edelim. GHIDRA aracının nasıl kullanacağınızı bilmiyorsanız "https://www.youtube.com/watch?v=fTGTnrgjuGA" bu videoya göz atabilirsiniz.
+Derlediğimiz C kodunu GHIDRA aracı ile analiz edelim. GHIDRA aracını nasıl kullanacağınızı bilmiyorsanız "https://www.youtube.com/watch?v=fTGTnrgjuGA" bu videoya göz atabilirsiniz.
 
-Tersine mühendislik yaptığımız herhangi bir yazılımda da if, else if, switch case gibi koşullu ifadeleri bulunabilir. Ve bu ifadeleri birbirinden ayırabilirsek kodun arka planını daha net görebiliriz. Peki makine diline bakarak if ve else if durumlarını birbirinden ayırt edebilir miyiz?
+Tersine mühendislik yaptığımız herhangi bir yazılımda if, else if, switch case gibi koşullu ifadeleri bulunabilir. Ve bu ifadeleri birbirinden ayırabilirsek kodun arka planını daha net görebiliriz. Peki makine diline bakarak if ve else if durumlarını birbirinden ayırt edebilir miyiz?
 
 Üst üste yazılmış 3 if koşul yapısında bir göz atalım. 
 
