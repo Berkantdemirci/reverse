@@ -1,6 +1,6 @@
 # Tersine Mühendisliği Anlamak
 
-Derlenmiş ve kapalı kaynak bir kodu birtakım tersine mühendislik araçları kulanarak assembly kodunu inceleyip temel felsefeyi anlamaya çalışacağız.
+Derlenmiş ve kapalı kaynak bir kodu birtakım tersine mühendislik araçları kullanarak assembly kodunu inceleyip temel felsefeyi anlamaya çalışacağız.
 
 İlk olarak bir C kodunun assembly kodlarını elde etmemiz gerekmektedir. Assembly kodlarını elde etmek, incelemek ve anlayabilmek için https://godbolt.org/ web sitesinden yararlanacağız. 
 
