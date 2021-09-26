@@ -15,7 +15,7 @@ C kodları bildiğiniz üzere derlenmeye ihtiyaç duyarlar. Bu seride herhangi b
 C kodunu yazdıktan sonra .c uzantılı olarak kaydedip Linux terminaline ``` gcc dosya_adı.c -o dosya_adı``` yazarak derliyoruz.
 Derlediğimiz C kodunu GHIDRA aracı ile analiz edelim. GHIDRA aracının nasıl kullanacağınızı bilmiyorsanız "https://www.youtube.com/watch?v=fTGTnrgjuGA" bu videoya göz atabilirsiniz.
 
-Bir uygulamada if ve else if yapıları makinenin anlayabilmesi için assembly komut setine çevirilmelidir. Tersine mühendislik yaptığımız herhangi bir yazılımda da if, else if, switch case gibi koşullu ifadeleri bulunabilir. Ve bu ifadeleri birbirinden ayırabilirsek kodun arka planını daha net görebiliriz. Peki makine diline bakarak if ve else if durumlarını birbirinden ayırt edebilir miyiz?
+Tersine mühendislik yaptığımız herhangi bir yazılımda da if, else if, switch case gibi koşullu ifadeleri bulunabilir. Ve bu ifadeleri birbirinden ayırabilirsek kodun arka planını daha net görebiliriz. Peki makine diline bakarak if ve else if durumlarını birbirinden ayırt edebilir miyiz?
 
 Üst üste yazılmış 3 if koşul yapısında bir göz atalım. 
 
@@ -145,7 +145,14 @@ Ama for döngüsünün iç kısmı assembly karşılaştırılmasının üst kı
 
 Yani tek seferlik çalışan bir while ve for döngüsü ile if arasındaki fark kolayca anlaşılabilir. Yukarıdaki ekran alıntısından da anlaşıldığı gibi for ve while döngüsü de if, else if yapısında olduğu gibi aynı assembly komut setine sahiptir. Peki while ile for arasındaki farkı nasıl anlayabiliriz?
 
-Bunun için crackmes.one sitesi üzerindeki bir crackmes'i analiz edeceğiz. GHIDRA ve IDA PRO araçlarını kullanarak decompile yapalım. (IDA PRO decompile çıktısı ilgili crackmes'in çözümlerinden alınmıştır.)
+Bunun için https://crackmes.one/ sitesi üzerindeki bir crackmes'i analiz edeceğiz. GHIDRA ve IDA PRO araçlarını kullanarak decompile yapalım. (IDA PRO decompile çıktısı ilgili crackmes'in çözümlerinden alınmıştır.)
+
+GHIDRA ile analiz ettiğim crackmes'i https://crackmes.one/crackme/612e85d833c5d41acedffa4f bu bağlatıdan indirebilir ve sonuçları kendiniz de test edebilirsiniz.
+zip dosyasını parolası : crackmes.one
+
+Analiz ederken bazı değişkenleri ve kullanıldıkları yerleri daha rahat görmek açısından değişkenlere yeni isimler verdim. Bundan dolayı analizi yaptığınızda değişken adları bu ekran alıntısındaki ile aynı olmayacaktır. Örneğin, scanf ile alınan bir veri sizde "local_48" olarak adlandırılmış olabilir. Onu "user_name" olarak değiştirdim. Gerekli değişken isimlendirmelerini kod yapısını inceleyerek ve mantıksal çıkarımlarla isimlendirebilirsiniz. İlgili değişkene sağ tıklayarak "rename variable" sekmesine tıklayın ve değiştirin.  
+
+Değişkenleri el ile tek tek değiştirmemek için sol üstteki edit sekmesine tıklayın. "Tool options" sekmesine tıklayın ve karşınıza çıkan ekranın alt kısmındaki filtreye "cursor text highlight" yazın. "Mouse button to active" yazan satır sizde "Middle" olarak seçili olacaktır. Onu "Left" ile değiştirin ve uygulaya basın. Artık bir değişkenin ismini kodun her yerinde aynı anda değiştirebilirsiniz. 
 
 | GHIDRA | IDA PRO |
 | --- | --- |
