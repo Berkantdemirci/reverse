@@ -11,8 +11,8 @@ bayraklar içeriyorsa (bknz : https://www.tutorialspoint.com/assembly_programmin
 
 ### Makine Dilinde *if* ve *else if* Koşullarını Anlamak
 
-C kodları bildiğiniz üzere derlenmeye ihtiyaç duyarlar. Bu seride herhangi bir C kodunu derlemek için linux üzerindeki gcc derleyicisini kullanacağım. 
-C kodunu yazdıktan sonra .c uzantılı olarak kaydedip Linux terminaline ``` gcc dosya_adı.c -o dosya_adı``` yazarak derliyoruz.
+C kodları bildiğiniz üzere derlenmeye ihtiyaç duyarlar. Bu seride herhangi bir C kodunu derlemek için linux üzerindeki gcc derleyicisini kullanacağım. C kodunu yazdıktan sonra .c uzantılı olarak kaydedip Linux terminaline ``` gcc dosya_adı.c -o dosya_adı``` yazarak derliyoruz.
+
 Derlediğimiz C kodunu GHIDRA aracı ile analiz edelim. GHIDRA aracının nasıl kullanacağınızı bilmiyorsanız "https://www.youtube.com/watch?v=fTGTnrgjuGA" bu videoya göz atabilirsiniz.
 
 Tersine mühendislik yaptığımız herhangi bir yazılımda da if, else if, switch case gibi koşullu ifadeleri bulunabilir. Ve bu ifadeleri birbirinden ayırabilirsek kodun arka planını daha net görebiliriz. Peki makine diline bakarak if ve else if durumlarını birbirinden ayırt edebilir miyiz?
