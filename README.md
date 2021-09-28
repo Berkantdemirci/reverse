@@ -239,8 +239,6 @@ return 0;
 |---|---|
 |![](https://user-images.githubusercontent.com/58151582/135175071-2fb3b8a4-fb2a-4a2e-9134-841331bdc6bb.png)|![](https://user-images.githubusercontent.com/58151582/135175152-0ab086bf-c168-4a03-9e76-878958d7c833.png)|
 
-Tersine mühendislik yaparak analiz ettiğimiz recursive ve iterative fonksiyonların birbirlerinden ne kadar da farklı yapılar olduklarını gösteren çok net bir görsel. Görüldüğü üzere recursive uygun şart sağlanana kadar sürekli kendisini çağırmaya devam ediyor. İterative bir fonksiyon ise içerisinde bulunan for döngüsünü gereği kadar döndürerek döngüden çıkıyor.  
-
 Recursive ve iterative fonksiyonların birbirlerine benzer ama kolayca ayırt edilebilir bir makine dili söz dizimine sahip olduğunu söyleyebiliriz. Örneğin; her ikisi de içerisinde cmp ve jump instructions yani bir karşılaştırma ifadesi barındırır, her ikisi de birer döngü durumudur. Ama aradaki farkı yukarıda bahsettiğimiz for durumu sayesinde kolayca görebiliriz. 
 
 Peki yukarıdaki anlatıma ek olarak ghidra'nın bize verdiği kullanışlı bir özellik olan "function graph" özelliğini iki fonksiyon için kullanalım. Bu özellik sayesinde makine tarafında bu iki fonksiyonun farkını daha net görebiliriz. Kendiniz de denemek istiyorsanız Üst penceredeki window sekmesine tıklayarak bu özelliği ve daha fazlasını görebilirsiniz. 
@@ -248,4 +246,6 @@ Peki yukarıdaki anlatıma ek olarak ghidra'nın bize verdiği kullanışlı bir
 | İterative | Recursive |
 |---|---|
 |![](https://user-images.githubusercontent.com/58151582/135178880-a858c3ed-2713-427e-9987-898fb3f3acfd.png)|![](https://user-images.githubusercontent.com/58151582/135178832-7f25acfb-377e-49b0-91d9-69d2d4960db9.png)|
+
+Tersine mühendislik yaparak analiz ettiğimiz recursive ve iterative fonksiyonların birbirlerinden ne kadar da farklı yapılar olduklarını gösteren çok net bir görsel. Görüldüğü üzere recursive uygun şart sağlanana kadar sürekli kendisini çağırmaya devam ediyor. İterative bir fonksiyon ise içerisinde bulunan for döngüsünü gereği kadar döndürerek döngüden çıkıyor.  
 
