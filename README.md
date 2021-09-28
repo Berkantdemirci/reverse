@@ -160,5 +160,9 @@ Değişkenleri el ile tek tek değiştirmemek için sol üstteki edit sekmesine 
 
 GHIDRA ve IDA PRO ile aynı kodu analiz ederken bile decompilerlar ilgili döngü için farklı çıktılar vermektedir. IDA PRO ve GHIDRA'nın bizlere gösterdiği gibi kontrol değişkeni while içerisinde değiştirilmediği sürece while ve for döngüsünü birbirinden ayırmak çok zordur.  
 
+# İşleri Biraz Karıştıralım
+
+Tersine mühendislik yaptığımızda arka tarafta nelerin döndüğünü temel olarak anladığımızı düşünüyorum. Bir adım ilerisine geçerek makine dilinde fonksiyon kavramına bir bakış atalım. Bu konunun önemli olduğu kanısındayım. Çünkü tersine mühendislik yapacağınız bir çok uygulama fonksiyon yapısını barındırmaktadır. Bu olguyu anlayabilirsek bakış açımızı daha da genişletebiliriz.  
+
 Buradan anlaşılacağı üzere tersine mühendislik yaparken elde ettiğimiz kaynak kodu aslında ana kaynak kodun bir yansımasıdır. Her ne kadar decompilerlar tarafından bizlere verilen kaynak C kodları ana kod ile aynı işlevi görse de birebir olarak çeviri mümkün değildir.
 
