@@ -158,11 +158,94 @@ Değişkenleri el ile tek tek değiştirmemek için sol üstteki edit sekmesine 
 | --- | --- |
 | ![](https://user-images.githubusercontent.com/58151582/134747668-abdc0299-8836-4aa3-ae9d-8191a13af7cf.png) | ![](https://user-images.githubusercontent.com/58151582/134747711-930a8d60-99f6-4fef-9491-521ce260a2d4.png) |
 
-GHIDRA ve IDA PRO ile aynı kodu analiz ederken bile decompilerlar ilgili döngü için farklı çıktılar vermektedir. IDA PRO ve GHIDRA'nın bizlere gösterdiği gibi kontrol değişkeni while içerisinde değiştirilmediği sürece while ve for döngüsünü birbirinden ayırmak çok zordur.  
+GHIDRA ve IDA PRO ile aynı kodu analiz ederken bile decompilerlar ilgili döngü için farklı çıktılar vermektedir. IDA PRO ve GHIDRA'nın bizlere gösterdiği gibi kontrol değişkeni while içerisinde değiştirilmediği sürece while ve for döngüsünü birbirinden ayırmak çok zordur. 
 
-# İşleri Biraz Karıştıralım
+Buradan anlaşılacağı üzere tersine mühendislik yaparken elde ettiğimiz kaynak kodu aslında ana kaynak kodun bir yansımasıdır. Her ne kadar decompilerlar tarafından bizlere verilen kaynak C kodları ana kod ile aynı işlevi görse de birebir olarak çeviri mümkün değildir.
+
+## İşleri Biraz Karıştıralım
 
 Tersine mühendislik yaptığımızda arka tarafta nelerin döndüğünü temel olarak anladığımızı düşünüyorum. Bir adım ilerisine geçerek makine dilinde fonksiyon kavramına bir bakış atalım. Bu konunun önemli olduğu kanısındayım. Çünkü tersine mühendislik yapacağınız bir çok uygulama fonksiyon yapısını barındırmaktadır. Bu olguyu anlayabilirsek bakış açımızı daha da genişletebiliriz.  
 
-Buradan anlaşılacağı üzere tersine mühendislik yaparken elde ettiğimiz kaynak kodu aslında ana kaynak kodun bir yansımasıdır. Her ne kadar decompilerlar tarafından bizlere verilen kaynak C kodları ana kod ile aynı işlevi görse de birebir olarak çeviri mümkün değildir.
+### Makine Dilinde Fonksiyonlar
+
+```C
+#include <stdio.h>
+int func()
+{
+    printf("selam");
+}
+int main()
+{
+    func();
+
+    return 0;
+}
+```
+![image](https://user-images.githubusercontent.com/58151582/135108192-401fc322-5faf-4f2e-9243-40ead8317c1d.png)
+ 
+Bir fonksiyon tanımlandığı zaman yukarıdaki ekran alıntısında da görüldüğü gibi her zaman fonksiyonun adıyla olmasada fonksiyon olduğunu belirten bir ad ile tanımlanır.
+
+### İterative vs Recursive
+
+Bu yazıda iterative ve recursive fonksiyon hakkında ufak bir hatırlatma yapalım. 
+
+İterative (yinelemeli) fonksiyon : For, while ve do...while C'deki döngüler, bir koşul doğru olduğu sürece yürütülecek döngülerdir. Bu döngülerin bulunduğu foksiyonlara yinelemeli fonksiyon denir.
+
+Recursive (özyinelemeli) fonksiyon : Kendi kendisini çağıran fonksiyonlara özyinelemeli fonksiyonlar denir. 
+
+Şimdi de recursive ve iterative fonksiyonları makine dilinde karşılaştıralım.
+
+Recursive 
+
+```C
+#include <stdio.h>
+
+int factorial(unsigned int i) {
+
+   if(i <= 1) {
+      return 1;
+   }
+   return i * factorial(i - 1);
+}
+
+int  main() {
+   int i ;
+   printf("type a number : ");
+   scanf("%d",&i);
+   printf("factorial is %d\n", factorial(i));
+   return 0;
+}
+```
+İterative 
+
+```C
+#include <stdio.h>
+int factorial(int n)
+{
+    int fact = 1 ;
+    for(int i = 1; i <= n; ++i)
+    fact = fact * i;
+
+    return fact;
+}
+int main() {
+int n = 5;
+
+printf("Factorial for 5 is %d", factorial(n));
+return 0;
+}
+```
+| Recursive | İterative|
+|---|---|
+|![](https://user-images.githubusercontent.com/58151582/135175071-2fb3b8a4-fb2a-4a2e-9134-841331bdc6bb.png)|![](https://user-images.githubusercontent.com/58151582/135175152-0ab086bf-c168-4a03-9e76-878958d7c833.png)|
+
+Tersine mühendislik yaparak analiz ettiğimiz recursive ve iterative fonksiyonların birbirlerinden ne kadar da farklı yapılar olduklarını gösteren çok net bir görsel. Görüldüğü üzere recursive uygun şart sağlanana kadar sürekli kendisini çağırmaya devam ediyor. İterative bir fonksiyon ise içerisinde bulunan for döngüsünü gereği kadar döndürerek döngüden çıkıyor.  
+
+Recursive ve iterative fonksiyonların birbirlerine benzer ama kolayca ayırt edilebilir bir makine dili söz dizimine sahip olduğunu söyleyebiliriz. Örneğin; her ikisi de içerisinde cmp ve jump instructions yani bir karşılaştırma ifadesi barındırır, her ikisi de birer döngü durumudur. Ama aradaki farkı yukarıda bahsettiğimiz for durumu sayesinde kolayca görebiliriz. 
+
+Peki yukarıdaki anlatıma ek olarak ghidra'nın bize verdiği kullanışlı bir özellik olan "function graph" özelliğini iki fonksiyon için kullanalım. Bu özellik sayesinde makine tarafında bu iki fonksiyonun farkını daha net görebiliriz. Kendiniz de denemek istiyorsanız Üst penceredeki window sekmesine tıklayarak bu özelliği ve daha fazlasını görebilirsiniz. 
+
+| İterative | Recursive |
+|---|---|
+|![](https://user-images.githubusercontent.com/58151582/135178880-a858c3ed-2713-427e-9987-898fb3f3acfd.png)|![](https://user-images.githubusercontent.com/58151582/135178832-7f25acfb-377e-49b0-91d9-69d2d4960db9.png)|
 
