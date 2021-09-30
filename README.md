@@ -300,7 +300,7 @@ int main()
 }
 ```
 
-Bu örneğin makine dilindeki yerini sizlere göstermek istedim lakin assembly komut seti çok uzun olduğu için alacağım ekran görüntüsü çok geniş yer kaplayacaktır. Assembly kodunu incelemek isterseniz (ki tavsiye ederim) yukarıdaki kodu https://godbolt.org/ web sitesini kullanabilirsiniz. 
+Bu örneğin makine dilindeki yerini sizlere göstermek istedim lakin assembly komut seti çok uzun olduğu için alacağım ekran görüntüsü çok geniş yer kaplayacaktır. Assembly kodunu incelemek isterseniz (ki tavsiye ederim) yukarıdaki kodu https://godbolt.org/ web sitesine yazarak ulaşabilirsiniz. 
 
 İç içe döngülerin makine tarafındaki davranışını ghidra aracı içerisindeki "function graph" özelliğinden yararlanarak göstereceğim.
  
