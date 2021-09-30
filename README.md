@@ -249,3 +249,61 @@ Peki yukarıdaki anlatıma ek olarak ghidra'nın bize verdiği kullanışlı bir
 
 Tersine mühendislik yaparak analiz ettiğimiz recursive ve iterative fonksiyonların birbirlerinden ne kadar da farklı yapılar olduklarını gösteren çok net bir görsel. Görüldüğü üzere recursive uygun şart sağlanana kadar sürekli kendisini çağırmaya devam ediyor. İterative bir fonksiyon ise içerisinde bulunan for döngüsünü gereği kadar döndürerek döngüden çıkıyor.  
 
+## Döngüception
+
+Döngü içerisinde döngü tersine mühendislik yapacağınız uygulamalarda karşıınıza çıkabilme ihtimali olan bir olgudur. Çünkü bir işi n * m kere yapmanın en kolay yoludur. 
+
+İç içe döngü durumunu (nested loop) çoğu zaman bir görevi sırayla tekrarlamak istediğimizde veya birbirine bağımlı birden çok diziyi yinelemeye çalışırken kullanırız.
+
+Buna verilebilecek en güzel örnek iki matrisin birbiri ile çarpılması problemidir. Problemin çözümü olarak iç içe matrislerin kullanılmasının sebebi matris çarpım kuralının doğasında yatmaktadır. Lafı uzatmadan örneğin tersine mühendislik dünyasındaki yerine bakalım.
+
+```C
+#include <stdio.h>
+#define N 4
+ 
+void multiply(int mat1[][N], int mat2[][N], int res[][N])
+{
+    int i, j, k;
+    for (i = 0; i < N; i++) {
+        for (j = 0; j < N; j++) {
+            res[i][j] = 0;
+            for (k = 0; k < N; k++)
+                res[i][j] += mat1[i][k] * mat2[k][j];
+        }
+    }
+}
+ 
+int main()
+{
+    int mat1[N][N] = { { 1, 1, 1, 1 },
+                       { 2, 2, 2, 2 },
+                       { 3, 3, 3, 3 },
+                       { 4, 4, 4, 4 } };
+ 
+    int mat2[N][N] = { { 1, 1, 1, 1 },
+                       { 2, 2, 2, 2 },
+                       { 3, 3, 3, 3 },
+                       { 4, 4, 4, 4 } };
+ 
+    int res[N][N]; 
+    int i, j;
+    multiply(mat1, mat2, res);
+ 
+    printf("Result matrix is \n");
+    for (i = 0; i < N; i++) {
+        for (j = 0; j < N; j++)
+            printf("%d ", res[i][j]);
+        printf("\n");
+    }
+ 
+    return 0;
+}
+```
+
+Bu örneğin makine dilindeki yerini sizlere göstermek istedim lakin assembly komut seti çok uzun olduğu için alacağım ekran görüntüsü çok geniş yer kaplayacaktır. Assembly kodunu incelemek isterseniz (ki tavsiye ederim) yukarıdaki kodu https://godbolt.org/ web sitesini kullanabilirsiniz. 
+
+İç içe döngülerin makine tarafındaki davranışını ghidra aracı içerisindeki "function graph" özelliğinden yararlanarak göstereceğim.
+ 
+![](https://user-images.githubusercontent.com/58151582/135455513-6b5b46be-6049-4c9f-9771-66d42d4b7d1e.png)
+
+Ekran alıntısı da bizlere gösteriyor ki iç içe döngülerde ilk olarak en içteki döngü bitiyor. En içteki döngü bitmeden en dıştaki döngünün bitmediğini görüyoruz. 
